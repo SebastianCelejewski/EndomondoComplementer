@@ -7,8 +7,10 @@ module EndomondoComplementer
 
 	class Complementer
 
-		$input_file_directory = "./input"
-		$output_file_name = "./output/output.gpx"
+		def initialize input_data_directory, output_file_name
+			@input_data_directory = input_data_directory
+			@output_file_name = output_file_name
+		end
 
 		def run
 			puts $input_file_directory
@@ -23,8 +25,8 @@ module EndomondoComplementer
 		end
 
 		def scan_input_files
-			puts "Looking for input files in #{$input_file_directory}"
-			input_files = Dir["#{$input_file_directory}/*.gpx"]
+			puts "Looking for input files in #{@input_data_directory}"
+			input_files = Dir["#{@input_file_directory}/*.gpx"]
 			puts "Found #{input_files.length} input files."
 			return input_files
 		end
@@ -126,10 +128,10 @@ module EndomondoComplementer
 
 		def save track
 			puts "Saving track"
-			File.open($output_file_name, "w") do |file|
+			File.open(@output_file_name, "w") do |file|
 				file.print(track.to_xml)
 			end
-			puts "Output written to #{$output_file_name}."
+			puts "Output written to #{@output_file_name}."
 		end
 
 		def load_track filename
