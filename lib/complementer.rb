@@ -26,7 +26,7 @@ module EndomondoComplementer
 
 		def scan_input_files
 			puts "Looking for input files in #{@input_data_directory}"
-			input_files = Dir["#{@input_file_directory}/*.gpx"]
+			input_files = Dir["#{@input_data_directory}/*.gpx"]
 			puts "Found #{input_files.length} input files."
 			return input_files
 		end
